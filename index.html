@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Volume Browser</title>
+<style>
+/* --- Reset & Basics --- */
+* { margin:0; padding:0; box-sizing:border-box; font-family: "Segoe UI", sans-serif; }
+body { background: #121212; color:white; overflow-x:hidden; scroll-behavior: smooth; transition: background 0.3s, color 0.3s;}
+a { color:#3b82f6; text-decoration:none; }
+a:hover { text-decoration: underline; }
+
+/* --- Dark/Light Toggle --- */
+body.light { background: #f4f4f4; color:#121212; }
+body.light a { color:#2563eb; }
+
+/* --- Header --- */
+header { text-align:center; padding:80px 20px; animation: fadeInDown 1s ease forwards; }
+header h1 { font-size:52px; color:#3b82f6; margin-bottom:16px; }
+header p { font-size:22px; color:#ccc; max-width:700px; margin:auto; }
+
+/* --- Features --- */
+.features { display:flex; flex-wrap:wrap; justify-content:center; gap:30px; padding:60px 20px; }
+.feature { background: rgba(255,255,255,0.05); padding:30px; border-radius:20px; width:260px; text-align:center; transition: transform 0.4s, box-shadow 0.4s; opacity:0; }
+.feature.visible { opacity:1; transform: translateY(0); }
+.feature:hover { transform: translateY(-12px); box-shadow: 0 15px 30px rgba(0,0,0,0.4); }
+.feature h3 { font-size:22px; margin-bottom:10px; color:#3b82f6; }
+.feature p { font-size:16px; color:#ddd; }
+
+/* --- Demo --- */
+.demo { text-align:center; padding:40px 20px; }
+.demo img { width: 90%; max-width: 900px; border-radius:20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); animation: fadeIn 1.2s ease forwards; }
+
+/* --- Download Button --- */
+.download { text-align:center; padding:50px 20px; }
+.download a { display:inline-block; padding:18px 42px; font-size:22px; color:white; background:#3b82f6; border-radius:16px; text-decoration:none; transition: transform 0.3s, background 0.3s; }
+.download a:hover { background:#2563eb; transform: scale(1.08); }
+
+/* --- Footer --- */
+footer { text-align:center; padding:40px 20px; font-size:14px; color:#aaa; }
+
+/* --- Animations --- */
+@keyframes fadeInDown {
+    0% { opacity:0; transform: translateY(-30px); }
+    100% { opacity:1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+    0% { opacity:0; }
+    100% { opacity:1; }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Volume Browser</h1>
+    <p>Fast, lightweight, and privacy-friendly web browser for Windows. Organize Latitudes, bookmarks, and tabs with style.</p>
+    <button id="themeToggle" style="margin-top:20px;padding:8px 16px;border:none;border-radius:8px;background:#3b82f6;color:white;cursor:pointer;">Toggle Light/Dark</button>
+</header>
+
+<section class="features">
+    <div class="feature"> <h3>Latitude & Tabs</h3> <p>Organize your browsing into Home, Work, and Play spaces with independent tabs and bookmarks.</p> </div>
+    <div class="feature"> <h3>Bookmarks</h3> <p>Save and manage bookmarks per Latitude for ultimate productivity and organization.</p> </div>
+    <div class="feature"> <h3>Navigation</h3> <p>Back, forward, reload, and URL bar keep browsing smooth and fast.</p> </div>
+    <div class="feature"> <h3>Dark Theme</h3> <p>Modern dark mode designed to reduce eye strain for long browsing sessions.</p> </div>
+    <div class="feature"> <h3>Lightweight</h3> <p>Minimal footprint on your system while keeping all essential features.</p> </div>
+</section>
+
+<section class="demo">
+    <img src="https://via.placeholder.com/900x500.png?text=Volume+Browser+Demo" alt="Volume Browser Demo">
+</section>
+
+<section class="download">
+    <a href="VolumeSetup.exe" download>⬇ Download for Windows</a>
+</section>
+
+<footer>
+    Made with ❤️ by <a href="https://github.com/KR0nyX629">KR0nyX629</a> | MIT License
+</footer>
+
+<script>
+// Animate features on scroll
+const features = document.querySelectorAll('.feature');
+function showFeatures() {
+    const triggerBottom = window.innerHeight * 0.85;
+    features.forEach(feature => {
+        const top = feature.getBoundingClientRect().top;
+        if(top < triggerBottom) feature.classList.add('visible');
+    });
+}
+window.addEventListener('scroll', showFeatures);
+window.addEventListener('load', showFeatures);
+
+// Theme toggle
+const toggleBtn = document.getElementById('themeToggle');
+toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('light');
+});
+</script>
+
+</body>
+</html>
