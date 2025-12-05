@@ -35,5 +35,5 @@
 - Our browser uses 0% carbon*
 
 ## Developers
-- !(https://img.shields.io/badge/GitHub-KR0nyX629-181717?logo=github)
+![GitHub](https://img.shields.io/badge/GitHub-KR0nyX629-181717?logo=github)
 
